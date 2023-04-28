@@ -1,0 +1,72 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hero Section Webpage</title>
+    <link rel="stylesheet" href="../temp/style.css">
+  </head>
+  <body>
+   <header class="header">
+    <a href="#" class="logo">Krv</a>
+    <nav class="navbar">
+        <a href="#" class="active">Home</a>
+        <a href="#">Test</a>
+        <a href="#">Test2</a>
+        <a href="#">Test22</a>
+        <a href="#">Test55</a>
+    </nav>
+   </header>
+   <section class="home">
+    <div class="home-content">
+      <h1>Krv-Beta Web</h1>
+      <h3>3d Web</h3>
+      <p> Welcome to the amazing world of the works i did here</p>
+      <!--   <a href="#" class="btn">Read More!</a> -->
+    </div>
+    <div class="cube-tooltip">Hover Over Me!!</div> 
+    <div class="top"></div>
+    <div class="cube" id="cube">
+      <div class="top"></div>
+      <div>
+        <span style="--i:0;">
+            <h2>KR</h2>
+            <h2>KR</h2>
+        </span>  
+        <span style="--i:1;">
+            <h2>KR</h2>
+            <h2>KR</h2>
+        </span>
+        <span style="--i:2;">
+          <h2>KR</h2>
+          <h2>KR</h2>
+        </span>
+        <span style="--i:3;">
+            <h2>KR</h2>
+            <h2>KR</h2>
+        </span>
+      </div>
+    </div>
+  </section>
+  <script>
+    const cube = document.getElementById('cube');
+  const spans = document.querySelectorAll('.cube div span');
+  
+  cube.addEventListener('mouseover', () => {
+    spans.forEach(span => {
+      span.style.transformStyle = 'preserve-3d';
+    });
+  });
+  
+  cube.addEventListener('mouseout', () => {
+    spans.forEach(span => {
+      span.style.transformStyle = 'flat';
+    });
+  });
+  const tooltip = document.querySelector('.cube-tooltip');
+  setTimeout(() => {
+    tooltip.style.display = 'none';
+  }, 5000);
+      </script>
+  </body>
+</html>
