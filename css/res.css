@@ -24,17 +24,77 @@
   body{
       background-color: var(--bg-color);
       color: var(--text-color);
-    
+      cursor: none;
   }
   section{
     min-height: 100vh;
     padding: 10rem 9% 2rem ;
   }
-  ::-webkit-scrollbar{
-    width: 0.5rem;
-  }
-  /*_________________________Mouse Effects___________________________*/
  
+  /*_________________________Mouse Effects___________________________*/
+
+  .cursor {
+    width: 20px;
+    height: 20px;
+    border: 1px solid white;
+    border-radius: 50%;
+    position: absolute;
+    animation: cursorAnim .5s infinite alternate;
+    pointer-events: none;
+    z-index: 50;
+  }
+  
+  .cursor::after {
+    content: "";
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    border: 8px solid gray;
+    border-radius: 50%;
+    opacity: .5;
+    top: -8px;
+    left: -8px;
+   display: block;
+    animation: cursorAnim2 .5s infinite alternate;
+  }
+  
+  @keyframes cursorAnim {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(.7);
+    }
+  }
+  
+  @keyframes cursorAnim2 {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(.4);
+    }
+  }
+  
+  @keyframes cursorAnim3 {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(3);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0;
+    }
+  }
+  
+  .expand {
+    animation: cursorAnim3 .5s forwards;
+    border: 1px solid red;
+  }
+
+
   @keyframes rtw {
     from {
       rotate: 0deg;
@@ -51,9 +111,9 @@
   
   #blob {
     background-color: white;
-    height: 34vmax;
+    height: 32vmax;
     aspect-ratio: 1;
-    position: absolute;
+    position: fixed;
     left: 50%;
     top: 50%;
     translate: -50% -50%;
@@ -61,15 +121,15 @@
     background: linear-gradient(to right, aquamarine, mediumpurple);
     animation: rtw 20s infinite;
     opacity: 0.8;
-    z-index: -2;
+    z-index: -5;
   }
   
   #blur {
     height: 100%;
     width: 100%;
-    position: absolute;
-    z-index: -2;    
-    backdrop-filter: blur(12vmax);
+    position: fixed;
+    z-index: -5;    
+    backdrop-filter: blur(10vmax);
   }
   /*_________________________Hero Section___________________________*/
   .header{
@@ -121,8 +181,6 @@
     display: flex;
     right: 20%;
     align-items: center;
-  
-
   }
   .home-content h3{
     font-size: 3.2rem;
@@ -147,7 +205,7 @@
     width: 300px;
     height: 300px;
     transform-style: preserve-3d;
-
+    z-index: 4;
     animation: animate 4s linear infinite;
   }
   @keyframes animate{
@@ -272,7 +330,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  
+    gap: 2rem;
   }
 
   .heading{

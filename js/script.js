@@ -3,17 +3,46 @@ let navLinks = document.querySelectorAll('header nav a');
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 let interval = null;
 const blob = document.getElementById("blob");
+const coords = { x: 0, y: 0 };
+var timeout;
+
+
 // ________________MOUSE MOVE ANIMATION________________
 
 
-window.onpointermove = event => { 
-  const { clientX, clientY } = event;
-  
-  blob.animate({
-    left: `${clientX}px`,
-    top: `${clientY}px`
-  }, { duration: 3000, fill: "forwards" });
-}
+window.addEventListener("mousemove", e => {
+  coords.x = e.clientX;
+  coords.y = e.clientY;
+});
+
+const animate = () => {
+  let x = coords.x;
+  let y = coords.y;
+  setTimeout(() => {
+    blob.style.left = x + 'px';
+    blob.style.top = y + 'px';
+  }, 300); 
+  requestAnimationFrame(animate);
+};
+
+animate();
+
+document.addEventListener("mousemove", (e) => {
+  let x = e.pageX
+  let y = e.pageY
+  cursor.style.left = x + "px"
+  cursor.style.top = y + "px"
+  cursor.style.display = "block"
+ function mouseStopped(){
+    cursor.style.display = "none"
+  }
+  clearTimeout(timeout);
+  timeout = setTimeout(mouseStopped, 1000);
+});
+
+document.addEventListener("mouseout", () => {
+  cursor.style.display = "none"
+});
 
 
 // _______________LETTER HYPIXELED________________
